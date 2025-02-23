@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>アドミン自動化スクリプトの詳細</title>
+    <link rel="stylesheet" href="stylesPortfolio.css">
+</head>
+<body>
+    <header>
+        <h1>アドミン自動化スクリプトの詳細</h1>
+    </header>
+    <main>
+        <section class="introduction">
+            <h2>アドミン自動化スクリプト</h2>
+            <p>本制作物は私の研究室内におけるアドミンの仕事を自動化するために作成しました．</p>
+            <p><strong>開発期間:</strong> 1日</p>
+            <p><strong>開発環境:</strong> Google Colaboratory</p>
+            <p><strong>開発言語:</strong> Python</p>
+            <p><strong>ステップ数:</strong> 約200行</p>
+        </section>
+        
+        <section class="details">
+            <h2>詳細</h2>
+            <h3>はじめに</h3>
+            <p>
+                まず，私は研究室で2人で担当するアドミンの作業のうち片方を担当しています．<br>
+                大まかな作業内容としては研究室内のメールアドレスやエイリアスの作成，更新，削除です．<br>
+                以下は業務手順の具体的な説明です．
+            </p>
+            <ol>
+                <li>
+                    <strong>更新依頼の受領:</strong><br>
+                    もう1人のアドミンから更新依頼が届きます．依頼は主にエクセルファイル形式で送られてきます．<br>
+                    更新依頼内容には，メールアドレスやエイリアスの作成，変更，削除などがあります．
+                </li>
+                <li>
+                    <strong>エクセルファイルの確認</strong>:<br>
+                    送られてきたエクセルファイル（エイリアス表）の内容を確認し，必要な更新内容を把握します．
+                </li>
+                <li>
+                    <strong>CSVファイルの作成:</strong><br>
+                    エクセルファイルの内容を参考にし，更新内容をサーバに反映するためのCSVファイルを作成します．
+                </li>
+                <li>
+                    <strong>先生への送信:</strong><br>
+                    作成したCSVファイルを先生に送信し，更新を依頼します．
+                </li>
+            </ol>
+            <p>
+                この手順によって更新作業を行い，研究室の管理を効率的に行います．<br>
+                この手順3において，今まで手作業でCSVファイルを作成していましたが，これを自動化するスクリプトを作成しました．
+            </p>
+
+            <h3>実装詳細</h3>
+            <p>
+                まず，もう1人のアドミンから送られてくるエイリアス表の例を以下に示します．<br>
+                この表を使って更新ファイルを生成します．
+            </p>
+            <img src="adminAuto/aliasTable.png" alt="エイリアス表の例" width="640">
+            <p>
+                それでは，エイリアス更新およびアカウント削除プログラムの出力例を以下に示します．<br>
+                ここでは，先ほどのエイリアス表および前回使用したエイリアス表を参照し，差分をとって変更箇所を検出することによって，エイリアスの転送先の更新ファイルやアカウント削除ファイルを計4つ自動生成します．
+            </p>
+            <img src="adminAuto/aliasUpdate.png" alt="エイリアス更新およびアカウント削除プログラムの出力" width="640">
+            <p>
+                生成された更新ファイルの一つを例として以下に示します．<br>
+                このファイルを先生に送信してサーバに投入することでエイリアスの更新およびアカウントの削除を行うことができます．
+            </p>
+            <img src="adminAuto/forwardAddress.png" alt="転送先アドレス更新ファイル" width="640">
+            <p>
+                次に，アカウント生成プログラムの出力例を以下に示します．<br>
+                ここでは，生成したいアカウント名などを入力すると，初期パスワードを自動でランダム生成し，作成に必要なファイルを4つ生成します．
+            </p>
+            <img src="adminAuto/accountCreate.png" alt="アカウント生成プログラムの出力" width="640">
+            <p>
+                生成されたアカウント作成ファイルの一つを例として以下に示します．<br>
+                このファイルを先生に送信してサーバに投入することでアカウントの作成を行うことができます．
+            </p>
+            <img src="adminAuto/createdFile.png" alt="アカウント作成ファイル" width="640">
+        </section>
+
+        <section class="item">
+            <h2>実際の制作物</h2>
+            <p><a href="adminAuto/admin_auto_task.ipynb" download>制作物のipythonノートブックファイルをダウンロード</a></p>
+        </section>
+        
+        <section class="back">
+            <p><a href="../index.html">戻る</a></p>
+        </section>
+    </main>
+    <footer>
+        <p>&copy; <span id="current-year"></span> 小林洋輝のポートフォリオ</p>
+    </footer>
+    <script>
+        const today = new Date();
+        const currentYear = today.getFullYear();
+        document.getElementById('current-year').textContent = currentYear;
+    </script>
+</body>
+</html>

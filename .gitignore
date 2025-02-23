@@ -1,0 +1,11 @@
+# 機密ファイル
+.htaccess
+.htpasswd
+
+# Mac, VSCodeなどの不要ファイル
+.DS_Store
+.vscode
+
+# 容量が大きいファイル
+*.unitypackage
+*/mp4

@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>本サイトの詳細</title>
+    <link rel="stylesheet" href="stylesPortfolio.css">
+</head>
+<body>
+    <header>
+        <h1>本サイトの詳細</h1>
+    </header>
+    <main>
+        <section class="introduction">
+            <h2>ihiroki.com</h2>
+            <p>
+                このポートフォリオサイトは、主にHTML等を使用して0から制作されました．<br>
+            </p>
+            <p><strong>開発期間:</strong> 2024年6月 ~ </p>
+            <p><strong>開発言語:</strong> HTML, CSS, Javascript</p>
+            <p><strong>開発環境:</strong> Visual Studio Code</p>
+            <p><strong>動作確認環境:</strong> Google Chrome, Safari, Firefox, Arc on MacOS Sonoma 14.5</p>
+            <p>
+                <strong>ステップ数（2024年7月13日時点）:</strong>
+                <ul>
+                    <li><strong>HTML: </strong>1128行</li>
+                    <li><strong>CSS: </strong>160行</li>
+                    <li><strong>JavaScript: </strong>120行</li>
+                </ul>
+            </p>
+        </section>
+
+        <section class="details">
+            <h2>詳細</h2>
+            <h3>開発背景</h3>
+            <ul>
+                <li>
+                    <p><strong>目標と目的:</strong></p>
+                    <p>このポートフォリオサイトを通じて，自己紹介やプロジェクトの詳細をわかりやすく伝えることを目指しました．</p>
+                    <p>ウェブデザインと開発スキルをポートフォリオとしてまとめることで，採用担当者や協力者に対して自分の能力をアピールすることを目的としています．</p>
+                </li>
+            </ul>
+            
+            <h3>開発過程</h3>
+            <ul>
+                <li>
+                    <p><strong>計画と設計:</strong></p>
+                    <p>初期段階でサイトの構造とデザインを計画．各セクションの内容とデザインをスケッチし，サイトマップを作成しました．</p>
+                </li>
+                <li>
+                    <p><strong>コーディング:</strong></p>
+                    <p>
+                        HTML，CSS，JavaScriptを使用してサイトを構築．各セクションを個別に開発し，最終的に統合しました．<br>
+                        また，コードの品質を保つために適切なコメントとフォーマットを維持しました．
+                    </p>
+                </li>
+                <li>
+                    <p><strong>テスト:</strong></p>
+                    <p>
+                        クロスブラウザテストを行いGoogle Chrome，Safari，Firefoxでの動作を確認しました．<br>
+                        それにあたってMacOS Sonoma 14.5で動作確認を行い，バグ修正とパフォーマンスの最適化を実施しました．
+                    </p>
+                </li>
+            </ul>
+
+            <h3>技術的詳細</h3>
+            <ul>
+                <li>
+                    <p><strong>認証方法:</strong></p>
+                    <p>サイトへのアクセス制限のためにbasic認証を導入しました．以下の画像は認証画面のスクリーンショットです．</p>
+                    <img src="ihirokiCom/basicAuthorization.png" alt="basic認証の画面" width="480">
+                </li>
+                <li>
+                    <p><strong>使用技術:</strong></p>
+                    <p><strong>開発言語:</strong> HTML, CSS, JavaScript</p>
+                    <p><strong>開発環境:</strong> Visual Studio Code</p>
+                    <p><strong>バージョン管理:</strong> Gitを使用してコードのバージョン管理を行いました．</p>
+                </li>
+            </ul>
+
+            <h3>今後の計画</h3>
+            <ul>
+                <li>
+                    <p><strong>HTTPS通信の導入:</strong></p>
+                    <p>セキュリティを向上させるため，HTTPSプロトコルへの移行を予定しています．</p>
+                </li>
+                <li>
+                    <p><strong>コンテンツの拡充:</strong></p>
+                    <p>追加のプロジェクトとそれに関する詳細な説明を追加する予定です．</p>
+                </li>
+                <li>
+                    <p><strong>デザインとユーザーエクスペリエンスの改善:</strong></p>
+                    <p>ユーザーインターフェースのデザインを改善し，より直感的で使いやすいサイトにするために模索中です．</p>
+                </li>
+                <li>
+                    <p><strong>タグの処理方法の改善:</strong></p>
+                    <p>HTMLファイルとCSSファイルの依存関係を減らすため，タグの処理方法を改善しメンテナンス性を向上させる予定です．</p>
+                </li>
+            </ul>
+        </section>
+
+        <section class="back">
+            <p><a href="../index.html">戻る</a></p>
+        </section>
+    </main>
+    <footer>
+        <p>&copy; <span id="current-year"></span> 小林洋輝のポートフォリオ</p>
+    </footer>
+    <script>
+        const today = new Date();
+        const currentYear = today.getFullYear();
+        document.getElementById('current-year').textContent = currentYear;
+    </script>
+</body>
+</html>

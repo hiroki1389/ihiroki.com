@@ -1,0 +1,70 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f9;
+}
+
+header {
+    background-color: #4CAF50;
+    color: white;
+    padding: 10px;
+    text-align: center;
+}
+
+main {
+    padding: 20px;
+    padding-bottom: 70px; /* フッターの高さよりも大きい余白を設定します */
+}
+
+footer {
+    background-color: #4CAF50;
+    color: white;
+    text-align: center;
+    padding: 10px;
+    position: fixed; /* フッターを固定位置に配置します */
+    width: 100%;
+    bottom: 0; /* ページの下部にフッターを配置します */
+    z-index: 999; /* フッターが他の要素よりも前面に表示されるようにします */
+}
+
+.introduction {
+    margin-bottom: 20px;
+}
+
+.details img {
+    height: auto;
+    display: block;
+    margin: 20px;
+    border-radius: 8px;
+}
+
+.details video {
+    height: auto;
+    display: block;
+    margin: 20px;
+    border-radius: 8px;
+}
+
+.details p {
+    font-size: 14px;
+    color: #555;
+    margin-top: -10px;
+}
+
+.item {
+    margin-top: 20px;
+}
+
+.back {
+    margin-top: 20px;
+}
+
+a {
+    color: #4CAF50;
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}

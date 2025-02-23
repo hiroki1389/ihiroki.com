@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>小林洋輝のポートフォリオ</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <h1>小林洋輝のポートフォリオ</h1>
+    </header>
+
+    <nav id="nav">
+        <a href="#about">はじめに</a>
+        <a href="#projects">制作物一覧</a>
+        <a href="#skills">使える言語一覧</a>
+        <a href="#career">経歴</a>
+        <a href="#qualifications">保有資格</a>
+    </nav>
+
+    <main id="mainContent">
+        <h2 id="about">はじめに</h2>
+        <p>
+            初めまして，小林洋輝と申します．現在，立命館大学大学院情報理工学研究科に通っている一回生です．<br>
+            大学では主にVRに関する研究を行っており，学外では資格取得という形でさまざまな分野の勉強を行っています．<br>
+            このサイトでは，主に私が今までに作成した制作物について紹介しています．
+        </p>
+
+        <h2 id="projects">制作物一覧</h2>
+        <div class="tags">
+            <span class="tag selected" data-tag="all">すべて表示</span>
+            <span class="tag" data-tag="Unity">Unity</span>
+            <span class="tag" data-tag="ROS2">ROS2</span>
+            <span class="tag" data-tag="Android_Studio">Android_Studio</span>
+            <span class="tag" data-tag="Xcode">Xcode</span>
+            <span class="tag" data-tag="Python">Python</span>
+            <span class="tag" data-tag="C#">C#</span>
+            <span class="tag" data-tag="Kotlin">Kotlin</span>
+            <span class="tag" data-tag="Swift">Swift</span>
+            <span class="tag" data-tag="HTML,CSS">HTML,CSS</span>
+            <span class="tag" data-tag="JavaScript">JavaScript</span>
+            <span class="tag" data-tag="VR">VR</span>
+        </div>
+
+        <div class="project">
+            <div class="project-item" data-tags="HTML,CSS JavaScript">
+                <div class="tags-container"></div>
+                <h3>ihiroki.com</h3>
+                <p>本ホームページです．</p>
+                <a href="portfolio/ihirokiCom.html">詳細を見る</a>
+            </div>
+            <div class="project-item" data-tags="Unity C# VR">
+                <div class="tags-container"></div>
+                <h3>逃げ切れ！疾走犯！！！！！</h3>
+                <p>研究室のグループワークで制作したVRアクションゲームです</p>
+                <a href="portfolio/juvenile.html">詳細を見る</a>
+            </div>
+            <div class="project-item" data-tags="Unity ROS2 C# Python VR">
+                <div class="tags-container"></div>
+                <h3>動的環境をVR空間に反映するシステム</h3>
+                <p>私が大学の研究で開発しているシステムです</p>
+                <a href="portfolio/research.html">詳細を見る</a>
+            </div>
+            <div class="project-item" data-tags="Python">
+                <div class="tags-container"></div>
+                <h3>アドミン自動化スクリプト</h3>
+                <p>私の研究室でのアドミンとしての仕事を自動化したスクリプトです</p>
+                <a href="portfolio/adminAuto.html">詳細を見る</a>
+            </div>
+            <div class="project-item" data-tags="Android_Studio Kotlin">
+                <div class="tags-container"></div>
+                <h3>雀魂風タイマー</h3>
+                <p>麻雀アプリ雀魂と同じ形式の2人対戦ゲーム用のタイマーアプリです</p>
+                <a href="portfolio/mahjongsoulTimer.html">詳細を見る</a>
+            </div>
+            <div class="project-item" data-tags="Xcode Swift">
+                <div class="tags-container"></div>
+                <h3>複式家計簿</h3>
+                <p>複式簿記の概念を取り入れたアレンジ性のある家計簿アプリです</p>
+                <a href="portfolio/doubleBookkeeping.html">詳細を見る</a>
+            </div>
+        </div>
+
+        <h2 id="skills">使える言語一覧</h2>
+        <table id="programmingLanguagesTable">
+            <thead>
+                <tr>
+                    <th>言語名</th>
+                    <th>使用歴</th>
+                    <th>主な用途</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!--後述のtableGenerator.jsで表の中身は生成．他の表も同様-->
+            </tbody>
+        </table>
+
+        <h2 id="career">経歴</h2>
+        <table id="careerTable">
+            <thead>
+                <tr>
+                    <th>年</th>
+                    <th>月</th>
+                    <th>学歴・職歴</th>
+                </tr>
+            </thead>
+            <tbody>
+            </tbody>
+        </table>
+
+        <h2 id="qualifications">保有資格</h2>
+        <table id="qualificationsTable">
+            <thead>
+                <tr>
+                    <th>年</th>
+                    <th>月</th>
+                    <th>資格名</th>
+                </tr>
+            </thead>
+            <tbody>
+            </tbody>
+        </table>
+    </main>
+
+    <footer>
+        <p>&copy; <span id="current-year"></span> 小林洋輝のポートフォリオ</p>
+    </footer>
+
+    <!-- JavaScriptファイルの読み込み -->
+    <script src="tableGenerator.js"></script>
+    <script src="filter.js"></script>
+    <script src="tagDisplay.js"></script>
+    <script>
+        const today = new Date();
+        const currentYear = today.getFullYear();
+        document.getElementById('current-year').textContent = currentYear;
+    </script>
+</body>
+</html>

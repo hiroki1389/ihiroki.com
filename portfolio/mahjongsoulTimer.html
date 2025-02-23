@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>雀魂風タイマーの詳細</title>
+    <link rel="stylesheet" href="stylesPortfolio.css">
+</head>
+<body>
+    <header>
+        <h1>雀魂風タイマーの詳細</h1>
+    </header>
+    <main>
+        <section class="introduction">
+            <h2>雀魂風タイマー</h2>
+            <p>本制作物は2人対戦用のボードゲームをプレイする際，制限時間を設けることを目的として作成しました．</p>
+            <p><strong>開発期間: </strong>3日</p>
+            <p><strong>開発環境: </strong>Android Studio Koala | 2024.1.1</p>
+            <p><strong>開発言語: </strong>Kotlin</p>
+            <p><strong>APIレベル: </strong>24</p>
+            <p><strong>利用想定デバイス: </strong>Android 7.0以降の端末</p>
+            <p><strong>動作確認環境: </strong>Rakuten Hand 5G (Android 11)</p>
+            <p>
+                <strong>ステップ数:</strong>
+                <ul>
+                    <li><strong>Kotlin:</strong> 180行</li>
+                    <li><strong>xml:</strong> 684行</li>
+                </ul>
+            </p>
+        </section>
+        
+        <section class="details">
+            <h2>詳細</h2>
+            <h3>はじめに</h3>
+            <p>
+                まず，雀魂におけるタイマーの仕組みを説明します．<br>
+                雀魂では各プレイヤーが5秒と20秒の持ち時間を持っており，5秒タイマー → 20秒タイマーの順で消費されます．<br>
+                5秒タイマーは毎ターン5秒に戻りますが，20秒タイマーは一度消費すると次のターン以降も消費した分だけ引き継がれて始まります．<br>
+                今回作成したアプリでは，この雀魂におけるタイマーの仕組みを用いることによって，2人対戦用のボードゲームで遊ぶ際，思考時間に制限を加えることを目的としています．
+            </p>
+
+            <h3>仕様</h3>
+            <p>まず，デモ動画を以下に示し，以降で細かい仕様について説明します．</p>
+            <video width="640" controls>
+                <source src="mahjongSoulTimer/demo.mp4" type="video/mp4">
+                お使いのブラウザはvideoタグをサポートしていません。
+            </video>
+
+            <p><strong>タイトル画面</strong></p>
+            <p>
+                初期画面を以下に示します．<br>
+                STARTを押すとタイマーが開始します．
+            </p>
+            <img src="mahjongSoulTimer/title.png" alt="タイトル画面" width="480">
+            <p><strong>タイマー画面</strong></p>
+            <p>
+                以下の画像はタイマーが開始した画面です．<br>
+                左側がプレイヤー1，右側がプレイヤー2の画面となっています．<br>
+                各プレイヤーの画面に表示された時間は残り時間を表示しており，別のプレイヤーにターンを渡したり，タイマーを一時停止したりできます．
+                <img src="mahjongSoulTimer/main.png" alt="メイン画面" width="480">
+                <ul>
+                    <li>
+                        <p><strong>一時停止ボタン</strong></p>
+                        <p>
+                            全てのタイマーを一時停止することができます．<br>
+                            以下に一時停止中の画像を示します．
+                            RESUMEボタンを押すことによって再開することができます．
+                        </p>
+                        <img src="mahjongSoulTimer/pause.png" alt="一時停止画面" width="480">
+                    </li>
+                    <li>
+                        <p><strong>ターン交代ボタン</strong></p>
+                        <p>プレイヤーのターンを交代することができます．</p>
+                    </li>
+                    <li>
+                        <p><strong>警告表示</strong></p>
+                        <p>
+                            プレイヤーの持ち時間が5秒以下になった時，タイマーを赤字で表示します．<br>
+                            実際に警告表示されている様子を以下に示します．
+                        </p>
+                        <img src="mahjongSoulTimer/dangerousTime.png" alt="5秒以下警告画面" width="480">
+                    </li>
+                    <li>
+                        <p><strong>ゲームオーバー表示</strong></p>
+                        <p>
+                            どちらかのプレイヤーがタイマーを使い切った時の画面です．<br>
+                            負けた方のプレイヤーに敗北を知らせるテキストを表示しています．<br>
+                            また，RESTARTボタンを押すことでもう一度タイマーを最初から始めることができます．<br>
+                            以下にその画像を示します．
+                        </p>
+                        <img src="mahjongSoulTimer/lose.png" alt="ゲームオーバー表示" width="480">
+                    </li>
+                </ul>
+            </p>
+        </section>
+
+        <section class="future-plans">
+            <h2>今後の予定</h2>
+            <p>以下の機能の追加や改善が予定されています:</p>
+            <ul>
+                <li>交代ボタンを両プレイヤーの画面に表示し、そのプレイヤーのターンだけ常に片方のみ表示させる</li>
+                <li>いつでもリセットできるボタンの追加</li>
+                <li>タイトル画面において20秒タイマーと5秒タイマーの時間を調整できるように変更</li>
+                <li>3人以上のボードゲームへの対応</li>
+            </ul>
+        </section>
+
+        <section class="item">
+            <h2>実際の制作物</h2>
+            <p><a href="mahjongSoulTimer/mahjongSoulTimer.apk" download>制作物のapkファイル（アプリ）をダウンロード</a></p>
+            <p><a href="https://github.com/hiroki1389/MahjongSoulTimer" target="_blank">Gitにアップロードされた制作物のプロジェクトリポジトリ</a></p>
+            <p><a href="https://github.com/hiroki1389/MahjongSoulTimer/tree/main/app/src/main/java/com/ihiroki/mahjongsoultimer" target="_blank">Gitにアップロードされた制作物のソースコード</a></p>
+        </section>
+        
+        <section class="back">
+            <p><a href="../index.html">戻る</a></p>
+        </section>
+    </main>
+    <footer>
+        <p>&copy; <span id="current-year"></span> 小林洋輝のポートフォリオ</p>
+    </footer>
+    <script>
+        const today = new Date();
+        const currentYear = today.getFullYear();
+        document.getElementById('current-year').textContent = currentYear;
+    </script>
+</body>
+</html>

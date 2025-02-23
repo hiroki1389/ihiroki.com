@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>複式家計簿の詳細</title>
+    <link rel="stylesheet" href="stylesPortfolio.css">
+</head>
+<body>
+    <header>
+        <h1>複式家計簿の詳細</h1>
+    </header>
+    <main>
+        <section class="introduction">
+            <h2>複式家計簿</h2>
+            <p><strong>開発期間: </strong>2日</p>
+            <p><strong>開発環境: </strong>Xcode</p>
+            <p><strong>開発言語: </strong>Swift</p>
+            <p><strong>利用想定デバイス: </strong>ios端末</p>
+            <p><strong>動作確認環境: </strong>iPhone 15 Pro (ios 17.5.1)</p>
+            <p><strong>ステップ数: </strong>945行</p>
+        </section>
+        
+        <section class="details">
+            <h2>詳細</h2>
+            <h3>はじめに</h3>
+            <p>
+                この作品は従来の費用と収益だけを考えた単式簿記の家計簿ではなく，資産や負債といった複式簿記の概念を取り入れた家計簿アプリです．<br>
+                これは日商簿記2級の資格を取得後，実生活に応用したいという思いから制作しました．
+            </p>
+
+            <h3>仕様</h3>
+            <p>まず，デモ動画を以下に示し，以降で細かい仕様について説明します．</p>
+            <video width="320" controls>
+                <source src="doubleBookkeeping/demo.mp4" type="video/mp4">
+                お使いのブラウザはvideoタグをサポートしていません。
+            </video>
+            <p><strong>科目タブ：</strong></p>
+            <p>
+                このタブでは勘定科目の一覧が表示されています．
+                <ul>
+                    <li>
+                        <p><strong>科目の追加・アーカイブ・削除</strong></p>
+                        <p>
+                            必要な勘定科目を追加したり，今後使わない科目を右スワイプでアーカイブしたり，削除したりできます．
+                        </p>
+                    </li>
+                    <li>
+                        <p><strong>科目のメモ追加</strong></p>
+                        <p>
+                            勘定科目の使い方などについてメモをすることができます．
+                        </p>
+                    </li>
+                </ul>
+            </p>
+            <p><strong>仕訳追加タブ：</strong></p>
+            <p>
+                このタブでは仕訳を追加することができます
+                <ul>
+                    <li>
+                        <p><strong>日付の入力</strong></p>
+                        <p>
+                            仕訳の日付を入力できます．デフォルトでは仕訳追加日が設定されています．
+                        </p>
+                    </li>
+                    <li>
+                        <p><strong>科目の設定・追加・削除</strong></p>
+                        <p>
+                            仕訳に必要な科目を設定できる他，科目の数を増やすこともできます．<br>
+                            また，科目を増やし過ぎた場合は右スワイプで削除することもできます．
+                        </p>
+                    </li>
+                    <li>
+                        <p><strong>金額の設定</strong></p>
+                        <p>
+                            仕訳に必要な科目の設定後，金額を入力することができます．<br>
+                            借方の合計金額と貸方の合計金額が一致しない際はエラーメッセージを出力します．
+                        </p>
+                    </li>
+                    <li>
+                        <p><strong>摘要の入力</strong></p>
+                        <p>
+                            仕訳の摘要を入力することができます．
+                        </p>
+                    </li>
+                </ul>
+            </p>
+            <p><strong>仕訳一覧タブ：</strong></p>
+            <p>
+                このタブでは追加した仕訳の一覧を見ることができます
+                <ul>
+                    <li>
+                        <p><strong>仕訳の科目別絞り込み機能</strong></p>
+                        <p>
+                            仕訳一覧の表示を勘定科目で絞り込むことができます．<br>
+                            例えば，現金で絞り込んだ場合，現金を含む仕訳のみを表示することができます．
+                        </p>
+                    </li>
+                    <li>
+                        <p><strong>仕訳の表示順変更</strong></p>
+                        <p>
+                            仕訳一覧の表示順を変更できます．<br>
+                            今回実装したものとしては，追加順，日付順のそれぞれ降順，昇順です．
+                        </p>
+                    </li>
+                    <li>
+                        <p><strong>仕訳の削除</strong></p>
+                        <p>
+                            追加した仕訳を削除できます．<br>
+                            削除方法としては，右スワイプ，もしくは画面右上を選択して削除です．
+                        </p>
+                    </li>
+                    <li>
+                        <p><strong>仕訳の編集機能</strong></p>
+                        <p>
+                            仕訳をタップすることで編集画面を表示できます．<br>
+                            編集項目としては追加時に設定できる全てで日付や科目数，科目，金額です．<br>
+                            ただし，少しバグが残っており，アプリ起動後初回のみ編集画面が真っ白で何も表示されないです．
+                        </p>
+                    </li>
+                </ul>
+            </p>
+            <p><strong>月次集計タブ：</strong></p>
+            <p>
+                このタブでは月別で仕訳を集計した科目別，項目別で合計金額を表示します．
+                <ul>
+                    <li>
+                        <p><strong>年月の指定</strong></p>
+                        <p>
+                            月別で表示するので当然ではありますが，任意の年月の集計を選択することができます．
+                        </p>
+                    </li>
+                    <li>
+                        <p><strong>赤字の表示</strong></p>
+                        <p>
+                            科目の合計金額がマイナスの場合は赤字で表示するようにしました．<br>
+                            ここで，損益科目のみ貸方がプラス（純資産がマイナスに影響）の際に赤字表示するようにしました．
+                        </p>
+                    </li>
+                </ul>
+            </p>
+        </section>
+
+        <section class="future-plans">
+            <h2>今後の予定</h2>
+            <p>以下の機能の追加や改善が予定されています:</p>
+            <p><strong>仕訳追加タブ:</strong></p>
+            <ul>
+                <li>テンプレ仕訳機能の追加</li>
+                <li>キーボード入力時の入力している文字が見えるようにする</li>
+            </ul>
+            <p><strong>仕訳追加タブ:</strong></p>
+            <ul><li>仕訳編集画面が一度で出ないバグの修正</li></ul>
+            <p><strong>月次集計タブ:</strong></p>
+            <ul>
+                <li>グラフ表示機能の追加</li>
+                <li>各勘定科目の金額における昇順，降順ソート機能の追加</li>
+            </ul>
+        </section>
+
+        <section class="item">
+            <h2>実際の制作物</h2>
+            <!-- Apple Developper Program（年額12,000円）に入らないとipaファイルがエクスポートできないので諦めた
+            <p><a href="doubleBookkeeping/double_bookkeeping.apk" download>制作物のipaファイル（アプリ）をダウンロード</a></p>
+            -->
+            <p><a href="https://github.com/hiroki1389/double_bookkeeping" target="_blank">Gitにアップロードされた制作物のプロジェクトリポジトリ</a></p>
+            <p><a href="https://github.com/hiroki1389/double_bookkeeping/tree/main/double_bookkeeping/Scripts" target="_blank">Gitにアップロードされた制作物のソースコード</a></p>
+        </section>
+
+        <section class="back">
+            <p><a href="../index.html">戻る</a></p>
+        </section>
+    </main>
+    <footer>
+        <p>&copy; <span id="current-year"></span> 小林洋輝のポートフォリオ</p>
+    </footer>
+    <script>
+        const today = new Date();
+        const currentYear = today.getFullYear();
+        document.getElementById('current-year').textContent = currentYear;
+    </script>
+</body>
+</html>

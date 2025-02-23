@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>動的環境をVR空間に反映するシステムの詳細</title>
+    <link rel="stylesheet" href="stylesPortfolio.css">
+</head>
+<body>
+    <header>
+        <h1>動的環境をVR空間に反映するシステムの詳細</h1>
+    </header>
+    <main>
+        <section class="introduction">
+            <h2>
+                卒業研究<br>
+                〜動的環境をVR空間に反映するシステム〜
+            </h2>
+            <p><strong>研究期間: </strong>2023年8月 ~ 現在に至る</p>
+            <p><strong>開発環境: </strong>Unity, ROS2</p>
+            <p><strong>開発言語: </strong>C#, Python</p>
+            <p><strong>利用想定デバイス: </strong>Windows 10, Ubuntu 22.04</p>
+            <p>
+                <strong>ステップ数:</strong>
+                <ul>
+                    <li><strong>C#: </strong>583行</li>
+                    <li><strong>Python: </strong>381行</li>
+                </ul>
+            </p>
+        </section>
+
+        <section class="details">
+            <h2>詳細</h2>
+            <h3>はじめに</h3>
+            <p>
+                この研究は，リアルワールドメタバース（以降，RWMとする）というものの実現を目指して行われました．<br>
+                従来のメタバースが基本的にVRで完結するのに対して，RWMは現実空間に焦点を当てたMRメタバースが基となっています．<br>
+                ここで，MRとはVRの一種で，これはVRが完全に仮想空間上で情報が提示されるのに対して，MRではVRゴーグルなどを通して，現実に情報が追加して提示されるようなものを指します．身近なものとしては，ポケモンGOなどが挙げられ，近いものにはARなどの表現があります．<br>
+                私が所属する研究室では，このRWMと従来のVRメタバースを組み合わせたMRキャンパスというものを提案しています．<br>
+                このMRキャンパスでは，VRとMRの両方のユーザが存在し，それぞれが遠隔地からのユーザ，現地のユーザとなります．<br>
+                つまり，完全にVRのメタバース空間，現実が基となるMRメタバースが同時に存在していることになります．<br>
+                これを実現するためにはいくつかの課題があります．その例としては次のようになります．
+            </p>
+            <ul>
+                <li>両空間のメタバースにおけるユーザの位置姿勢や音声の互いの空間への反映</li>
+                <li>現実空間の環境をVR環境に同期すること</li>
+            </ul>
+            <img src="research/mr_campus_image.png" alt="MRキャンパス実現における課題の画像" width="480">
+            <p>
+                私はこの中でも，現実空間の環境をVR環境に同期するという課題を解決するために，”リアルワールドメタバースの実現に向けた動的環境をVR環境に反映するシステムの開発”と題した研究をしています．<br>
+                この課題における問題点は，VR空間と現実空間を同期させる上で，現実空間を模したVR空間を生成する上で，事前に環境全てをモデリングで再現した際に，現実世界における机や椅子といった小物の移動によって，VR空間と現実空間との間で矛盾が発生してしまうことです．<br>
+                ここで，リアルタイムに現実環境を三次元再構成してVR環境に反映することがまず思い浮かびますが，これはリアルタイムで通信量を大幅に消費するため，メタバースという大多数が同時に参加する条件下においてあまり好ましくありません．<br>
+                これに対処するために提案したのが今回のシステムとなります．
+            </p>
+
+            <h3>提案システム</h3>
+            <p><strong>概要</strong></p>
+            <p>今回提案したシステムの流れは次のとおりです．</p>
+            <ol>
+                <li>
+                    <p><strong>必要なモデルの用意</strong></p>
+                    <p>
+                        まず，机や椅子といった，動く可能性のある物体を全てモデリングで用意します．
+                    </p>
+                    <img src="research/system_flow_0.png" alt="用意するモデルの例" width="320">
+                </li>
+                <li>
+                    <p><strong>VR環境の初期状態</strong></p>
+                    <p>
+                        そして，現実環境における半永続的に動かないような壁や床，天井のみをモデリングしたものを用意します．
+                    </p>
+                    <img src="research/system_flow_1.png" alt="システムの流れ1の画像" width="320">
+                </li>
+                <li>
+                    <p><strong>現実環境のセンシング</strong></p>
+                    <p>
+                        次に，現実環境をセンシングすることで，机や椅子といった動く可能性のある物体の位置や向きなどを取得します．
+                    </p>
+                    <img src="research/system_flow_2.png" alt="システムの流れ2の画像" width="320">
+                </li>
+                <li>
+                    <p><strong>VR環境への反映</strong></p>
+                    <p>
+                        最後に，センシングによって取得された物体の位置姿勢を基に，VR環境にモデルを動的に配置します．
+                    </p>
+                    <img src="research/system_flow_3.png" alt="システムの流れ3の画像" width="320">
+                </li>
+            </ol>
+            <p>この3,4の処理を繰り返すことによって現実環境とVR環境の同期を実現します．</p>
+
+            <p><strong>実際のシステム構成</strong></p>
+            <p>これらを実現するためのシステム構成が次のようになります．</p>
+            <img src="research/system_composition.png" alt="システム構成の画像" width="640">
+            <p>これはシステムは次のような手順で処理が進みます．</p>
+            <ol>
+                <li>
+                    <p><strong>環境のセンシング</strong></p>
+                    <p>
+                        まず，RGBDカメラ（通常のカメラに深度センサを加えたもの）で環境をセンシングし，環境の画像および深度画像を取得します．<br>
+                        ここでは，intel RealSense D435というRGBDカメラを使用しています．
+                    </p>
+                </li>
+                <li>
+                    <p><strong>物体検出</strong></p>
+                    <p>
+                        次に，RGBDカメラから取得した画像より，VR環境に必要な移動する可能性のある机や椅子といった物体を検出し，画像内における位置や大きさを取得します．<br>
+                        ここでは，物体検出の手法として，YOLOXという二次元物体検出アルゴリズムを採用しています．
+                    </p>
+                </li>
+                <li>
+                    <p><strong>物体の三次元位置の計算</strong></p>
+                    <p>そして，手順1,2からカメラの位置姿勢と深度画像，物体の二次元位置，大きさを取得して，三次元位置および三次元の大きさを計算します．</p>
+                </li>
+                <li>
+                    <p><strong>VR空間への反映</strong></p>
+                    <p>
+                        最後に，物体名や三次元位置，大きさを取得してVR空間にモデルを動的に配置します．<br>
+                        ここで，VR環境の構築には，Unityを使用しました．
+                    </p>
+                </li>
+            </ol>
+            <p>
+                ここで，YOLOXでは物体の向きが取れないといったことから，物体を配置する際に向きを考慮できないという課題があります．<br>
+                そこで，今回のシステムでは，物体はカメラに対して正面を向いているとして配置し，複数角度からの物体検出に対して，正面から取得した時に最も理想的であると考えられる幅になる時の角度を正面として設定しています．<br>
+                例えば，モニタの幅は正面から取得した際に最も幅が広くなり，真横から取得した際に最も小さくなると考えられるため，取得した中で最も幅の長い向きを正面として処理します．
+            </p>
+            <img src="research/monitor.png" alt="モニタの向きによる幅の違いの画像" width="640">
+
+            <p><strong>動作確認</strong></p>
+            <p>まず，動作確認環境を以下に示します．</p>
+            <img src="research/test_environment.png" alt="動作確認環境の画像" width="640">
+            <p>
+                カメラの位置姿勢を事前に決め，これらのカメラ1~3を順番に取得して反映することを考えます．<br>
+                今回の動作確認における検出物体は3つのモニタであり，それぞれの位置姿勢を正しく反映できるかを確認します．<br>
+                それでは，カメラ1~3からの結果を順番に取得した際の結果を以下に示します．
+            </p>
+            <img src="research/test_result.png" alt="動作確認結果の画像" width="640">
+            <p>
+                今回の動作確認では，机を白いキューブで表わし，モニタを黄色いキューブで表わしています．<br>
+                この結果画像から，最初はカメラ1の方向に向いて反映されていますが，カメラ2, 3と取得方向が増えるにつれて，より正しい方向を向き，より理想的な幅に変わっているのがわかります．
+            </p>
+
+            <h3>実装詳細</h3>
+            <p><strong>Ubuntu側のセットアップ</strong></p>
+            <p>Ubuntu側の処理では，主にROS2というデータの送受信に用いられる通信方法を用いています．</p>
+            <p>まず，以下の2つのgitから，intel RealSenseのデータをROS2通信に乗せて送るためのセットアップをします．</p>
+            <ul>
+                <li><a href="https://github.com/IntelRealSense/librealsense" target="_blank">IntelRealSense/librealsense</a></li>
+                <li><a href="https://github.com/IntelRealSense/realsense-ros" target="_blank">IntelRealSense/realsense-ros</a></li>
+            </ul>
+            <p>次に，以下の2つのgitから，YOLOXという物体検出を行うためのアルゴリズムをROS2通信に乗せて使うためのセットアップをします．</p>
+            <ul>
+                <li><a href="https://github.com/Megvii-BaseDetection/YOLOX" target="_blank">Megvii-BaseDetection/YOLOX</a></li>
+                <li><a href="https://github.com/Ar-Ray-code/YOLOX-ROS" target="_blank">IAr-Ray-code/YOLOX-ROS</a></li>
+            </ul>
+            <p>また，ROS2通信をWindows側のUnityと送受信可能にさせるためのセットアップをします．</p>
+            <ul>
+                <li><a href="https://github.com/Unity-Technologies/Unity-Robotics-Hub" target="_blank">Unity-Technologies/Unity-Robotics-Hub</a></li>
+            </ul>
+            <p><strong>Windows側のセットアップ</strong></p>
+            <p>最後に，UnityでROS2通信を受信するためのセットアップをします．</p>
+            <ul>
+                <li><a href="https://github.com/Unity-Technologies/ROS-TCP-Endpoint" target="_blank">Unity-Technologies/ROS-TCP-Endpoint</a></li>
+            </ul>
+            <p><strong>利用方法</strong></p>
+            <p>本システムの起動中のROS2通信のグラフを以下に示します．</p>
+            <img src="research/rqt_graph.png" alt="ROS2通信のrqt_graphの画像" width="1280">
+            <p>このシステムでは，以下に示す順にROS2ノードを立ち上げることでIntelRealSense D435からのセンサ情報を基にVR環境（Unity）にモデルを反映します．</p>
+            <ol>
+                <li>realsense-rosのノードを立ち上げ，IntelRealSense D435のRGBDデータをROS2通信で送信する．</li>
+                <li>realsense-rosが送信しているトピックを受け取って，yolox_rosが受け取るトピック名に変換して送信する</li>
+                <li>yolox_rosのノードを立ち上げ，物体検出を行う．</li>
+                <li>yolox_rosの物体検出結果と，realsense-rosの深度画像を基に物体の三次元位置と大きさを計算するノードを立ち上げ，物体の情報をまとめたデータを送信する．</li>
+                <li>UnityEndPointのノードを立ち上げ，UnityとROS2通信の送受信を行うための架け橋を建てます．</li>
+                <li>最後に，Unity側のプロジェクトを実行し，物体情報のROS2通信を受信してVR空間にモデルを反映します．</li>
+            </ol>
+            <p>
+                以上で，今回開発したシステムを利用することができます．<br>
+                また，今回作成したROS2およびUnityのプロジェクトのgitは本ページの最後に示しています．
+            </p>
+        </section>
+        
+        <section class="future-plans">
+            <h2>今後の予定</h2>
+            <p>以下の機能の追加や改善が予定されています:</p>
+            <ul>
+                <li>ロボットにカメラを乗せた自己位置推定機能の追加</li>
+                <li>対応できる検出物体の対象の増加</li>
+            </ul>
+        </section>
+
+        <section class="item">
+            <h2>制作物および論文</h2>
+            <p><a href="research/bachelor_article.pdf" download>学部の卒業論文をダウンロード</a></p>
+            <p><a href="https://github.com/hiroki1389/ros2_ws" target="_blank">Gitにアップロードされた制作物のROS2プロジェクトリポジトリ</a></p>
+            <p><a href="https://github.com/hiroki1389/HiroMetaverse" target="_blank">Gitにアップロードされた制作物のUnityプロジェクトリポジトリ</a></p>
+        </section>
+
+        <section class="back">
+            <p><a href="../index.html">戻る</a></p>
+        </section>
+    </main>
+    <footer>
+        <p>&copy; <span id="current-year"></span> 小林洋輝のポートフォリオ</p>
+    </footer>
+    <script>
+        const today = new Date();
+        const currentYear = today.getFullYear();
+        document.getElementById('current-year').textContent = currentYear;
+    </script>
+</body>
+</html>

@@ -1,0 +1,130 @@
+/* 基本設定 */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+/* ヘッダーとフッター */
+header {
+    background-color: #4CAF50;
+    color: white;
+    padding: 1px;
+    text-align: center;
+}
+
+footer {
+    background-color: #4CAF50;
+    color: white;
+    text-align: center;
+    padding: 1px;
+    position: fixed;
+    width: 100%;
+    bottom: 0;
+    z-index: 999;
+}
+
+/* メインコンテンツ */
+main {
+    padding: 1em;
+    padding-bottom: 70px; /* フッターの高さよりも大きい余白を設定 */
+}
+
+/* ナビゲーション */
+nav {
+    padding: 1em;
+    background-color: #333;
+}
+
+nav a {
+    color: white;
+    margin: 0 1em;
+    text-decoration: none;
+}
+
+/* テーブル */
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+th, td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: left;
+}
+
+th {
+    background-color: #f2f2f2;
+}
+
+/* 制作物 */
+.project {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1em;
+    margin-top: 10px; /* 制作物一覧の上に隙間を追加 */
+}
+
+.project-item {
+    border: 1px solid #ddd;
+    padding: 1em;
+    flex-grow: 1; /* 幅を一行目に合わせる */
+    min-width: 200px; /* 最低限必要な幅 */
+    max-width: 350px; /* 最大幅 */
+    box-sizing: border-box;
+}
+
+/* タグ */
+.tag {
+    display: inline-block;
+    padding: 5px 10px;
+    background-color: #e0e0e0;
+    border-radius: 20px; /* 角丸 */
+    margin-top: 5px; /* タグ一覧の上に余白を追加 */
+    margin-bottom: 5px; /* タグ一覧の下に余白を追加 */
+    margin-right: 5px;
+}
+
+.hidden {
+    display: none;
+}
+
+.tags .tag {
+    cursor: pointer; /* タグ一覧のタグにはポインターを表示 */
+}
+
+.project-item .tag {
+    cursor: default; /* 制作物ボックス内のタグはデフォルトのカーソルを表示 */
+}
+
+.tag.selected {
+    color: white; /* 強調表示の文字色 */
+}
+
+/* 開発フレームワークに対するスタイル */
+.tags .tag[data-tag="Unity"],
+.tags .tag[data-tag="ROS2"],
+.tags .tag[data-tag="Android_Studio"],
+.tags .tag[data-tag="Xcode"] {
+    background-color: lightcoral;
+}
+
+/* プログラミング言語に対するスタイル */
+.tags .tag[data-tag="Python"],
+.tags .tag[data-tag="C#"],
+.tags .tag[data-tag="Kotlin"],
+.tags .tag[data-tag="Swift"],
+.tags .tag[data-tag="HTML,CSS"],
+.tags .tag[data-tag="JavaScript"] {
+    background-color: lightblue;
+}
+
+/* 分野に対するスタイル */
+.tags .tag[data-tag="VR"] {
+    background-color: lightgreen;
+}
